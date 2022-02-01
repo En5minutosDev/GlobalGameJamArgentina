@@ -9,7 +9,8 @@ public class MovimientoPlataforma : MonoBehaviour
     public int k_NivelActivo;
     public Rigidbody m_MiRb;
     public int k_VelocidadAngular;
-    
+    public float k_scaleRotation = 1f;
+
     Vector3 m_VelocidadAnguloEuler;
 
     //Aplicación
@@ -22,7 +23,7 @@ public class MovimientoPlataforma : MonoBehaviour
     void Start()
     {
         m_MiRb = GetComponent<Rigidbody>();
-
+        k_scaleRotation = 1f;
         SeleccionDeEjeDeRotacion(b_RotacionX, b_RotacionY, b_RotacionZ);
 
     }
@@ -48,7 +49,7 @@ public class MovimientoPlataforma : MonoBehaviour
 
     void FixedUpdate()
     {
-        Quaternion deltaRotation = Quaternion.Euler(m_VelocidadAnguloEuler * Time.fixedDeltaTime);
+        Quaternion deltaRotation = Quaternion.Euler(m_VelocidadAnguloEuler * Time.fixedDeltaTime * k_scaleRotation);
         m_MiRb.MoveRotation(m_MiRb.rotation * deltaRotation);
     }
 

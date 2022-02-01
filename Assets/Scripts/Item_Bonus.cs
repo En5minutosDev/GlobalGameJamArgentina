@@ -26,6 +26,7 @@ public class Item_Bonus : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && b_Desactivacion)
         {
             gameObject.SetActive(false);
+            
         }
 
         
